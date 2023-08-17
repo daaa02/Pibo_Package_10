@@ -125,7 +125,7 @@ class RunSchedule():
         
         try:
             folder = "/home/pi/UserData"
-            logfile = f'(P04)_{datetime.now().strftime("%m%d_%H%M")}.txt'   #('P<PACKAGE_NUMBER>_DATE.txt')   
+            logfile = f'(P10)_{datetime.now().strftime("%m%d_%H%M")}.txt'   #('P<PACKAGE_NUMBER>_DATE.txt')   
             f = open(f'{folder}/{logfile}','w')
             
             # os.system(f'python3 {self.path}/{self.act}')
