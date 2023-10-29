@@ -27,6 +27,9 @@ class RunSchedule():
         self.path = '/home/pi/Pibo_Package_10'
         self.completion = int
         self.act = ''
+        self.act1 = ''
+        self.act2 = ''
+        self.act3 = ''
 
 
     def day(self):
@@ -119,37 +122,67 @@ class RunSchedule():
         #             rand = random.choice(['03_tiny', '04_flying'])
         #             self.act = f'Pibo_Conversation/src/Roleplay/{rand}.py'
         
-        # 마지막 활동은 헤어짐 시나리오 실행 
+        # # 마지막 활동은 헤어짐 시나리오 실행 
 
-        if self.completion == 9:
-            self.act = f'Pibo_Conversation/src/Fairytale/18_rabbit.py'   
+        # if self.completion == 9:
+        #     self.act1 = f'Pibo_Conversation/src/Fairytale/18_rabbit.py'   
 
-        if self.completion == 10:
-            self.act = f'Pibo_Play/src/Soc/soc_2.py''   
+        # if self.completion == 10:
+        #     self.act2 = f'Pibo_Play/src/Soc/soc_2.py''   
         
-        if self.completion == 11:
-            self.act = f'Pibo_Conversation/src/goodbye.py'           
+        # if self.completion == 11:
+        #     self.act2 = f'Pibo_Conversation/src/goodbye.py'           
         
         try:
             folder = "/home/pi/UserData"
-            logfile = f'(P10)_{datetime.now().strftime("%m%d_%H%M")}.txt'   #('P<PACKAGE_NUMBER>_DATE.txt')   
-            f = open(f'{folder}/{logfile}','w')
+            
+            logfile1 = f'(P10)_{datetime.now().strftime("%m%d_%H%M")}.txt'   #('P<PACKAGE_NUMBER>_DATE.txt')   
+            f = open(f'{folder}/{logfile1}','w')
             
             # os.system(f'python3 {self.path}/{self.act}')
-            out = subprocess.check_output([f'python3 {self.path}/{self.act}'], shell=True, stderr=subprocess.STDOUT, encoding="utf-8")  
+            out1 = subprocess.check_output([f'python3 {self.path}/{self.act1}'], shell=True, stderr=subprocess.STDOUT, encoding="utf-8")  
             
-            f.write(out)
+            f.write(out1)
             f.close()            
             
             try:
-                drive_upload(filepath=f'{folder}/{logfile}', filename=logfile)
+                drive_upload(filepath=f'{folder}/{logfile1}', filename=logfile1)
                 
             except Exception as e:
                 print(e)
 
-            text_to_speech(text="파이보랑 또 놀자!")            
-            motion.set_motion("m_wakeup", 1)
-            subprocess.run(['python3 /home/pi/Pibo_Package_10/Pibo_Conversation/src/start_touch.py'], shell=True)
+            # 2
+            logfile2 = f'(P10)_{datetime.now().strftime("%m%d_%H%M")}.txt'   #('P<PACKAGE_NUMBER>_DATE.txt')   
+            f = open(f'{folder}/{logfile2}','w')
+            
+            out2 = subprocess.check_output([f'python3 {self.path}/{self.act2}'], shell=True, stderr=subprocess.STDOUT, encoding="utf-8")  
+            
+            f.write(out2)
+            f.close()            
+            
+            try:
+                drive_upload(filepath=f'{folder}/{logfile2}', filename=logfile2)
+                
+            except Exception as e:
+                print(e)
+
+            # 3
+            logfile3 = f'(P10)_{datetime.now().strftime("%m%d_%H%M")}.txt'   #('P<PACKAGE_NUMBER>_DATE.txt')   
+            f = open(f'{folder}/{logfile3}','w')
+            out3 = subprocess.check_output([f'python3 {self.path}/{self.act3}'], shell=True, stderr=subprocess.STDOUT, encoding="utf-8")  
+            
+            f.write(out3)
+            f.close()            
+            
+            try:
+                drive_upload(filepath=f'{folder}/{logfile3}', filename=logfile3)
+                
+            except Exception as e:
+                print(e)
+
+            # text_to_speech(text="파이보랑 또 놀자!")            
+            # motion.set_motion("m_wakeup", 1)
+            # subprocess.run(['python3 /home/pi/Pibo_Package_10/Pibo_Conversation/src/start_touch.py'], shell=True)
         
             # 더 하고 싶다고 하면 여기서부터
             # if self.completion >= 12:
