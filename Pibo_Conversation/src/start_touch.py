@@ -79,8 +79,9 @@ while True:
                     break
                     
                 else:
-                    oled.clear()
-                    continue
+                    # oled.clear()
+                    # continue
+                    break
             
             
 os.system('python3 /home/pi/Pibo_Package_10/Pibo_Conversation/src/schedule_run.py')
