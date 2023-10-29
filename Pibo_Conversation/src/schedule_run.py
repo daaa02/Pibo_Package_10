@@ -27,9 +27,9 @@ class RunSchedule():
         self.path = '/home/pi/Pibo_Package_10'
         self.completion = int
         self.act = ''
-        self.act1 = ''
-        self.act2 = ''
-        self.act3 = ''
+        self.act1 = f'Pibo_Conversation/src/Fairytale/18_rabbit.py' 
+        self.act2 = f'Pibo_Play/src/Soc/soc_2.py'
+        self.act3 = f'Pibo_Conversation/src/goodbye.py'   
 
 
     def day(self):
@@ -124,14 +124,14 @@ class RunSchedule():
         
         # # 마지막 활동은 헤어짐 시나리오 실행 
 
-        # if self.completion == 9:
-        #     self.act1 = f'Pibo_Conversation/src/Fairytale/18_rabbit.py'   
+        # # if self.completion == 9:
+        # self.act1 = f'Pibo_Conversation/src/Fairytale/18_rabbit.py'   
 
-        # if self.completion == 10:
-        #     self.act2 = f'Pibo_Play/src/Soc/soc_2.py''   
+        # # if self.completion == 10:
+        # self.act2 = f'Pibo_Play/src/Soc/soc_2.py'   
         
-        # if self.completion == 11:
-        #     self.act2 = f'Pibo_Conversation/src/goodbye.py'           
+        # # if self.completion == 11:
+        # self.act2 = f'Pibo_Conversation/src/goodbye.py'           
         
         try:
             folder = "/home/pi/UserData"
