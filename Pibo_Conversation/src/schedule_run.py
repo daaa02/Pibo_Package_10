@@ -146,15 +146,19 @@ class RunSchedule():
                 
             except Exception as e:
                 print(e)
-            
+
+            text_to_speech(text="파이보랑 또 놀자!")            
+            motion.set_motion("m_wakeup", 1)
+            subprocess.run(['python3 /home/pi/Pibo_Package_10/Pibo_Conversation/src/start_touch.py'], shell=True)
+        
             # 더 하고 싶다고 하면 여기서부터
-            if self.completion >= 12:
-                pass
+            # if self.completion >= 12:
+            #     pass
             
-            else:
-                text_to_speech(text="파이보랑 또 놀자!")            
-                motion.set_motion("m_wakeup", 1)
-                subprocess.run(['python3 /home/pi/Pibo_Package_10/Pibo_Conversation/src/start_touch.py'], shell=True)
+            # else:
+            #     text_to_speech(text="파이보랑 또 놀자!")            
+            #     motion.set_motion("m_wakeup", 1)
+            #     subprocess.run(['python3 /home/pi/Pibo_Package_10/Pibo_Conversation/src/start_touch.py'], shell=True)
             # 여기까지 주석!! 대신 다음 활동 하려면 매번 재부팅 해야함
             
         except Exception as ex:
